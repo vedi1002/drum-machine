@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DrumPadComponent } from './drum-interface/drum-pad/drum-pad.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DrumPadComponent
   ],
   imports: [
     BrowserModule,

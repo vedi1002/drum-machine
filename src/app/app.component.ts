@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'drum-machine';
-  keys = ['Q', 'W', 'E', 'A', 'S', 'D'];
 }

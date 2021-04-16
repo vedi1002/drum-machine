@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { sounds } from './drum-sounds.constants'
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-drum-pad',
@@ -8,16 +7,26 @@ import { sounds } from './drum-sounds.constants'
 })
 export class DrumPadComponent implements OnInit {
   @Input() keyName: string;
-  soundUrl: string;
+  @Input() soundUrl: string;
+  @Input() power: boolean;
   constructor() {}
 
   ngOnInit(): void {
-    this.soundUrl = sounds[this.keyName];
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key.toUpperCase() === this.keyName) {
+      let element: HTMLElement | null = document.getElementById(this.keyName);
+      element?.click();
+    }
   }
 
   playDrum() {
     let audioElement = new Audio(this.soundUrl);
-    audioElement.play()
+    if (this.power) {
+      audioElement.play()
+    }
   }
   
   

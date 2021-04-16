@@ -1,1 +1,13 @@
-<p>outer-container works!</p>
+<app-drum-pad *ngFor="let key of bank"
+[keyName]="key.keyTrigger" [soundUrl]="key.url" [power]="power"></app-drum-pad>
+
+<div>
+    <mat-button-toggle-group (change)="onChange($event)" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle value="bank1">Bank One</mat-button-toggle>
+        <mat-button-toggle value="bank2">Bank Two</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
+<div>
+    <mat-slide-toggle (change)="onTogglePower($event)">Power</mat-slide-toggle>
+</div>
